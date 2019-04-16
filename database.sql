@@ -24,7 +24,7 @@ CREATE TABLE workout
     last_updated DATE NOT NULL DEFAULT NOW(),
     distance_miles REAL,
     time_minutes REAL,
-    degrees REAL,
+    incline_degrees REAL,
     terrain INTEGER REFERENCES terrain(id)
 
 );
