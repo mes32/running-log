@@ -41,9 +41,9 @@ npm run client
 
 ### Completed Features
 - [x] Initialize the database schema using a runnable script file
+- [x] Allow user to add a run entry (CREATE)
 
 ### Future Features
-- [ ] Allow user to add a run entry (CREATE)
 - [ ] Display a log of previously logged runs (READ)
 - [ ] Allow user to edit previously logged runs (UPDATE) 
 - [ ] Allow user to delete run logs (DELETE)

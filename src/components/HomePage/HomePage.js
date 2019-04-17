@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class HomePage extends Component {
     constructor(props) {
@@ -19,7 +20,25 @@ class HomePage extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state);
+        if (this.state.distance) {
+            const action = {
+                type: 'ADD_WORKOUT',
+                payload: {
+                    distance_miles: this.convertInt(this.state.distance),
+                    duration_minutes: this.convertInt(this.state.duration),
+                    incline_percent: this.convertInt(this.state.incline)
+                }
+            };
+            this.props.dispatch(action);
+        }
+    }
+
+    convertInt = (string) => {
+        if (string === '') {
+            return null;
+        } else {
+            return parseInt(string);
+        }
     }
 
     render() {
@@ -36,4 +55,4 @@ class HomePage extends Component {
     }
 }
 
-export default HomePage;
+export default connect()(HomePage);

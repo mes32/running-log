@@ -5,12 +5,14 @@ const app = express();
 const bodyParser = require('body-parser');
 
 // Include server-side routers
+const workoutRouter = require('./routes/workout.router');
 
 // Configure body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Configure server-side routes
+app.use('/api/workout', workoutRouter);
 
 // Serve static files
 app.use(express.static('build'));
