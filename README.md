@@ -47,7 +47,7 @@ npm run client
 - [ ] Display a log of previously logged runs (READ)
 - [ ] Allow user to edit previously logged runs (UPDATE) 
 - [ ] Allow user to delete run logs (DELETE)
-- [ ] Graph consistency of workouts over time
+- [ ] Graph consistency of workouts over time (react-calendar-heatmap)
 
 ## Authors
 Mike Stockman

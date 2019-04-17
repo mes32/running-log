@@ -21,10 +21,9 @@ VALUES
 CREATE TABLE workout
 (
     id SERIAL PRIMARY KEY,
-    last_updated DATE NOT NULL DEFAULT NOW(),
+    last_updated TIMESTAMP NOT NULL DEFAULT NOW(),
     distance_miles REAL,
-    time_minutes REAL,
-    incline_degrees REAL,
+    duration_minutes REAL,
+    incline_percent REAL,
     terrain INTEGER REFERENCES terrain(id)
-
 );
