@@ -3,7 +3,23 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    console.log('in route GET api/workout');
+    const selectText = `
+        SELECT
+            id,
+            last_updated,
+            distance_miles,
+            duration_minutes,
+            incline_percent,
+            terrain
+        FROM workout
+        ORDER BY last_updated DESC;
+    `;
+    pool.query(selectText).then((response) => {
+        res.send(response.rows);
+    }).catch((error) => {
+        console.log(error);
+        console.log('Error in route GET /api/workout');
+    });
 });
 
 router.post('/', (req, res) => {

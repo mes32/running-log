@@ -3,7 +3,8 @@ import axios from 'axios';
 
 function* fetchWorkouts() {
     try {
-        yield axios.get('api/workout');
+        const response = yield axios.get('api/workout');
+        yield put({ type: 'SET_WORKOUTS', payload: response.data });
     } catch (error) {
         console.log('Error in FETCH_WORKOUTS:', error);
         alert('Unable to fetch workouts from server.')
