@@ -42,9 +42,9 @@ npm run client
 ### Completed Features
 - [x] Initialize the database schema using a runnable script file
 - [x] Allow user to add a run entry (CREATE)
+- [x] Display a log of previously logged runs (READ)
 
 ### Future Features
-- [ ] Display a log of previously logged runs (READ)
 - [ ] Allow user to edit previously logged runs (UPDATE) 
 - [ ] Allow user to delete run logs (DELETE)
 - [ ] Graph consistency of workouts over time (react-calendar-heatmap)
