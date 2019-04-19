@@ -1,69 +1,62 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import './WorkoutForm.css';
 
-class WorkoutForm extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            distance: '',
-            duration: '',
-            incline: ''
-        };
+const DEFAULT_DATA = {
+    distance: '',
+    duration: '',
+    incline: ''
+};
+
+function WorkoutForm(props) {
+    const [data, setData] = useState(DEFAULT_DATA);
+
+    const clearForm = () => {
+        setData(DEFAULT_DATA);
     }
 
-    clearForm = () => {
-        this.setState({
-            distance: '',
-            duration: '',
-            incline: ''
-        });
-    }
-
-    handleChange = (event) => {
-        this.setState({
-            ...this.state,
+    const handleChange = (event) => {
+        setData({ 
+            ...data,
             [event.target.name]: event.target.value
         });
-    }
+    };
 
-    handleSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        if (this.state.distance) {
+        if (data.distance) {
             const action = {
                 type: 'ADD_WORKOUT',
                 payload: {
-                    distance_miles: this.convertInt(this.state.distance),
-                    duration_minutes: this.convertInt(this.state.duration),
-                    incline_percent: this.convertInt(this.state.incline)
+                    distance_miles: convertInt(data.distance),
+                    duration_minutes: convertInt(data.duration),
+                    incline_percent: convertInt(data.incline)
                 }
             };
-            this.props.dispatch(action);
-            this.clearForm();
+            props.dispatch(action);
+            clearForm();
         }
-    }
+    };
 
-    convertInt = (string) => {
+    const convertInt = (string) => {
         if (string === '') {
             return null;
         } else {
             return parseInt(string);
         }
-    }
+    };
 
-    render() {
-        return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input name="distance" onChange={this.handleChange} type="number" placeholder="Distance (miles)" value={this.state.distance} />
-                    <input name="duration" onChange={this.handleChange} type="number" placeholder="Time (minutes)" value={this.state.duration} />
-                    <input name="incline" onChange={this.handleChange} type="number" placeholder="Incline (percent)" value={this.state.incline} />
-                    <input type="submit" value="Submit" />
-                </form>
-            </div>
-        );
-    }
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input name="distance" onChange={handleChange} type="number" placeholder="Distance (miles)" value={data.distance} />
+                <input name="duration" onChange={handleChange} type="number" placeholder="Time (minutes)" value={data.duration} />
+                <input name="incline" onChange={handleChange} type="number" placeholder="Incline (percent)" value={data.incline} />
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+    );
 }
 
 export default connect()(WorkoutForm);
