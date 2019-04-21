@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import './WorkoutList.css';
 import WorkoutRow from './WorkoutRow/WorkoutRow';
 
 function WorkoutList(props) {
 
-    const [data, setData] = useState({ workouts: [] });
-
     useEffect(() => {
         async function fetchData() {
-            const response = await axios.get('api/workout');
-            await setData({ workouts: response.data });
+            await props.dispatch({ type: 'FETCH_WORKOUTS' });
         }
         fetchData();
     }, []);
@@ -28,7 +25,7 @@ function WorkoutList(props) {
                 </tr>
             </thead>
             <tbody>
-                {data.workouts.map(
+                {props.workouts.map(
                     workout => <WorkoutRow key={workout.id} workout={workout} />
                 )}
             </tbody>
@@ -36,4 +33,10 @@ function WorkoutList(props) {
     );
 }
 
-export default WorkoutList;
+const mapReduxStoreToProps = (reduxStore) => {
+    return {
+        workouts: reduxStore.workouts
+    };
+}
+
+export default connect(mapReduxStoreToProps)(WorkoutList);

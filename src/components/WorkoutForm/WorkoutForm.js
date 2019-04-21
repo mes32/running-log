@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import './WorkoutForm.css';
@@ -17,7 +17,7 @@ function WorkoutForm(props) {
     }
 
     const handleChange = (event) => {
-        setData({ 
+        setData({
             ...data,
             [event.target.name]: event.target.value
         });
