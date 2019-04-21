@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function WorkoutRow(props) {
     const date = props.workout.last_updated;
@@ -15,5 +16,14 @@ function WorkoutRow(props) {
         </tr>
     );
 }
+
+WorkoutRow.propTypes = {
+    workout: PropTypes.shape({
+        last_updated: PropTypes.string.isRequired,
+        distance_miles: PropTypes.number.isRequired,
+        duration_minutes: PropTypes.number,
+        incline_percent: PropTypes.number
+    }).isRequired
+};
 
 export default WorkoutRow;

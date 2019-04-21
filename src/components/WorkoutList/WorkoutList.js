@@ -1,16 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import './WorkoutList.css';
 import WorkoutRow from './WorkoutRow/WorkoutRow';
 
 function WorkoutList(props) {
-
     useEffect(() => {
-        async function fetchData() {
-            await props.dispatch({ type: 'FETCH_WORKOUTS' });
-        }
-        fetchData();
+        props.dispatch({ type: 'FETCH_WORKOUTS' });
     }, []);
 
     return (
@@ -33,10 +30,12 @@ function WorkoutList(props) {
     );
 }
 
-const mapReduxStoreToProps = (reduxStore) => {
-    return {
-        workouts: reduxStore.workouts
-    };
-}
+WorkoutList.propTypes = {
+    workouts: PropTypes.array.isRequired
+};
+
+const mapReduxStoreToProps = (reduxStore) => ({
+    workouts: reduxStore.workouts
+});
 
 export default connect(mapReduxStoreToProps)(WorkoutList);
