@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
     const selectText = `
         SELECT
             id,
-            last_updated,
+            to_char(last_updated, 'YYYY-MM-DD') AS date_updated,
             distance_miles,
             duration_minutes,
             incline_percent,

@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import './WorkoutList.css';
-import WorkoutRow from './WorkoutRow/WorkoutRow';
+import Workout from '../../classes/Workout';
+import WorkoutRow from './WorkoutRow/WorkoutRow'; 
 
 function WorkoutList(props) {
     useEffect(() => {
@@ -31,7 +32,7 @@ function WorkoutList(props) {
 }
 
 WorkoutList.propTypes = {
-    workouts: PropTypes.array.isRequired
+    workouts: PropTypes.arrayOf(PropTypes.instanceOf(Workout)).isRequired
 };
 
 const mapReduxStoreToProps = (reduxStore) => ({

@@ -1,8 +1,9 @@
+import moment from 'moment';
 
 class Workout {
     constructor(sqlEntry) {
         this.id = sqlEntry.id;
-        this.lastUpdated = sqlEntry.last_updated;
+        this.lastUpdated = moment(sqlEntry.date_updated, 'YYYY-MM-DD');
         this.distanceMiles = sqlEntry.distance_miles;
         this.durationMinutes = sqlEntry.duration_minutes;
         this.inclinePercent = sqlEntry.incline_percent;
@@ -17,7 +18,7 @@ class Workout {
     }
 
     getDate() {
-        return this.lastUpdated;
+        return this.lastUpdated.format('M/D/YY');
     }
 
     getDistance() {
