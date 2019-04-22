@@ -1,29 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Workout from '../../../classes/Workout';
+
 function WorkoutRow(props) {
-    const date = props.workout.last_updated;
-    const distance = props.workout.distance_miles;
-    const duration = props.workout.duration_minutes;
-    const incline = props.workout.incline_percent;
     return (
         <tr>
-            <td>{date}</td>
-            <td>{distance}</td>
-            <td>{duration}</td>
-            <td>{incline}</td>
+            <td>{props.workout.getDate()}</td>
+            <td>{props.workout.getDistance()}</td>
+            <td>{props.workout.getDuration()}</td>
+            <td>{props.workout.getIncline()}</td>
             <td>-</td>
         </tr>
     );
 }
 
 WorkoutRow.propTypes = {
-    workout: PropTypes.shape({
-        last_updated: PropTypes.string.isRequired,
-        distance_miles: PropTypes.number.isRequired,
-        duration_minutes: PropTypes.number,
-        incline_percent: PropTypes.number
-    }).isRequired
+    workout: PropTypes.instanceOf(Workout).isRequired
 };
 
 export default WorkoutRow;
