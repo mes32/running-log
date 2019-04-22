@@ -3,7 +3,7 @@ import React from 'react';
 import WorkoutForm from '../WorkoutForm/WorkoutForm';
 import WorkoutList from '../WorkoutList/WorkoutList';
 
-function HomePage(props) {
+export function HomePage(props) {
     return (
         <div>
             <WorkoutForm />
