@@ -13,8 +13,8 @@ import { HomePage } from '../components/HomePage/HomePage';
 describe('<HomePage />', () => {
     // const homePage = render(<HomePage />);
 
-    // test('renders 1 <WorkoutForm />', () => {
-    //     expect(homePage.find('WorkoutForm').length).toBe(1);
+    // test('renders exactly 1 <WorkoutForm />', () => {
+    //     expect(homePage.find('WorkoutList').length).toBe(1);
     // });
 
     // test('renders 1 <WorkoutList />', () => {
