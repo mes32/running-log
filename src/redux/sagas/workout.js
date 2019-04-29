@@ -1,10 +1,13 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
+import Workout from '../../classes/Workout';
+
 function* fetchWorkouts() {
     try {
         const response = yield axios.get('api/workout');
-        yield put({ type: 'SET_WORKOUTS', payload: response.data });
+        const workouts = yield Workout.fromQuery(response.data);
+        yield put({ type: 'SET_WORKOUTS', payload: workouts });
     } catch (error) {
         console.log('Error in FETCH_WORKOUTS:', error);
         alert('Unable to fetch workouts from server.')

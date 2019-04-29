@@ -1,24 +1,31 @@
 import moment from 'moment';
 
+const SQL_DATE_FORMAT = 'YYYY-MM-DD';
+
 class Workout {
-    constructor(sqlEntry) {
-        this.id = sqlEntry.id;
-        this.lastUpdated = moment(sqlEntry.date_updated, 'YYYY-MM-DD');
-        this.distanceMiles = sqlEntry.distance_miles;
-        this.durationMinutes = sqlEntry.duration_minutes;
-        this.inclinePercent = sqlEntry.incline_percent;
+    constructor(id, lastUpdated, distanceMiles, durationMinutes, inclinePercent) {
+        this.id = id;
+        this.lastUpdated = moment(lastUpdated, SQL_DATE_FORMAT);
+        this.distanceMiles = distanceMiles;
+        this.durationMinutes = durationMinutes;
+        this.inclinePercent = inclinePercent;
     }
 
-    static convertFromSQL(sqlArray) {
-        const objectArray = new Array(sqlArray.length);
-        for (let i in sqlArray) {
-            objectArray[i] = new Workout(sqlArray[i]);
+    static fromQuery(rows) {
+        const objectArray = new Array(rows.length);
+        for (let i in rows) {
+            const id = rows[i].id;
+            const lastUpdated = rows[i].date_updated;
+            const distanceMiles = rows[i].distance_miles;
+            const durationMinutes = rows[i].duration_minutes;
+            const inclinePercent = rows[i].incline_percent;
+            objectArray[i] = new Workout(id, lastUpdated, distanceMiles, durationMinutes, inclinePercent);
         }
         return objectArray;
     }
 
     getDate() {
-        return this.lastUpdated.format('M/D/YY');
+        return this.lastUpdated.format('MMM DD, YYYY');
     }
 
     getDistance() {

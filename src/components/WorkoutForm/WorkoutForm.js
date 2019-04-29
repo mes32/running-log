@@ -53,7 +53,7 @@ function WorkoutForm(props) {
                 <input name="distance" onChange={handleChange} type="number" placeholder="Distance (miles)" value={data.distance} />
                 <input name="duration" onChange={handleChange} type="number" placeholder="Time (minutes)" value={data.duration} />
                 <input name="incline" onChange={handleChange} type="number" placeholder="Incline (percent)" value={data.incline} />
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Log Run" />
             </form>
         </div>
     );
