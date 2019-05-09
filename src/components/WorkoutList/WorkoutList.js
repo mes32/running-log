@@ -11,12 +11,16 @@ function WorkoutList(props) {
         props.dispatch({ type: 'FETCH_WORKOUTS' });
     }, []);
 
+    // const distanceHeading = () => {
+    //     if 
+    // }
+
     return (
         <table>
             <thead>
                 <tr>
                     <th>Date</th>
-                    <th>Distance (miles)</th>
+                    <th>Distance ({props.distance})</th>
                     <th>Time (minutes)</th>
                     <th>Incline (percent)</th>
                     <th>Terrain</th>
@@ -36,7 +40,8 @@ WorkoutList.propTypes = {
 };
 
 const mapReduxStoreToProps = (reduxStore) => ({
-    workouts: reduxStore.workouts
+    workouts: reduxStore.workouts,
+    distance: reduxStore.units.distance
 });
 
 export default connect(mapReduxStoreToProps)(WorkoutList);

@@ -2,6 +2,8 @@ import moment from 'moment';
 
 const SQL_DATE_FORMAT = 'YYYY-MM-DD';
 
+const MILES_TO_KILOMETERS = 1.60934;
+
 class Workout {
     constructor(id, lastUpdated, distanceMiles, durationMinutes, inclinePercent) {
         this.id = id;
@@ -28,11 +30,17 @@ class Workout {
         return this.lastUpdated.format('MMM DD, YYYY');
     }
 
-    getDistance() {
-        if (this.distanceMiles) {
-            return this.distanceMiles;
-        } else {
+    getDistance(units) {
+        if (!this.distanceMiles) {
             return '';
+        }
+        const distanceUnits = units.distance;
+        if (distanceUnits === 'miles') {
+            return this.distanceMiles;
+        } else if (distanceUnits === 'kilometers') {
+            return (this.distanceMiles * MILES_TO_KILOMETERS).toFixed(2);
+        } else {
+            return 'ERROR';
         }
     }
 

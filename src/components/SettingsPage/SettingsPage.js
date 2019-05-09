@@ -2,12 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 function SettingsPage(props) {
+
+    const setDistance = (event) => {
+        const action = {
+            type: 'SET_DISTANCE_UNITS',
+            payload: event.target.value
+        };
+        props.dispatch(action);
+    }
+
     return (
         <div>
             <h2>Settings</h2>
             <div>
                 <label htmlFor="distance-units">Distance Units: </label>
-                <select id="distance-units" defaultValue={props.units.distance}>
+                <select id="distance-units" onChange={setDistance} value={props.units.distance}>
                     <option value="miles">Miles</option>
                     <option value="kilometers">Kilometers</option>
                 </select>
