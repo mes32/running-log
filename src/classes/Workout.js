@@ -45,7 +45,7 @@ class Workout {
         }
     }
 
-    getDuration() {
+    getDuration(units) {
         if (!this.durationMinutes) {
             return '';
         }

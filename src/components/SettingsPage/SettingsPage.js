@@ -31,7 +31,7 @@ function SettingsPage(props) {
             </div>
             <div>
                 <label htmlFor="duration-units">Duration Units: </label>
-                <select id="duration-units" defaultValue={props.units.duration}>
+                <select id="duration-units" onChange={setDuration} value={props.units.duration}>
                     <option value="minutes">Minutes</option>
                     <option value="hours">Hours</option>
                 </select>
