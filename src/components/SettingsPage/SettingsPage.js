@@ -11,6 +11,14 @@ function SettingsPage(props) {
         props.dispatch(action);
     }
 
+    const setDuration = (event) => {
+        const action = {
+            type: 'SET_DURATION_UNITS',
+            payload: event.target.value
+        };
+        props.dispatch(action);
+    }
+
     return (
         <div>
             <h2>Settings</h2>

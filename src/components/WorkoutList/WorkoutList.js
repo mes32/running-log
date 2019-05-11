@@ -21,7 +21,7 @@ function WorkoutList(props) {
                 <tr>
                     <th>Date</th>
                     <th>Distance ({props.distance})</th>
-                    <th>Time (minutes)</th>
+                    <th>Time ({props.duration})</th>
                     <th>Incline (percent)</th>
                     <th>Terrain</th>
                 </tr>
@@ -41,7 +41,8 @@ WorkoutList.propTypes = {
 
 const mapReduxStoreToProps = (reduxStore) => ({
     workouts: reduxStore.workouts,
-    distance: reduxStore.units.distance
+    distance: reduxStore.units.distance,
+    duration: reduxStore.units.duration
 });
 
 export default connect(mapReduxStoreToProps)(WorkoutList);

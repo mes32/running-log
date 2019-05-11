@@ -3,6 +3,7 @@ import moment from 'moment';
 const SQL_DATE_FORMAT = 'YYYY-MM-DD';
 
 const MILES_TO_KILOMETERS = 1.60934;
+const MINUTES_TO_HOURS = 1 / 60;
 
 class Workout {
     constructor(id, lastUpdated, distanceMiles, durationMinutes, inclinePercent) {
@@ -45,10 +46,16 @@ class Workout {
     }
 
     getDuration() {
-        if (this.durationMinutes) {
-            return this.durationMinutes;
-        } else {
+        if (!this.durationMinutes) {
             return '';
+        }
+        const durationUnits = units.duration;
+        if (durationUnits === 'minutes') {
+            return this.durationMinutes;
+        } else if (durationUnits === 'hours') {
+            return (this.durationMinutes * MINUTES_TO_HOURS).toFixed(2);
+        } else {
+            return 'ERROR';
         }
     }
 
