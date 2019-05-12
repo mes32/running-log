@@ -4,15 +4,16 @@ table {
 }
 
 th {
-    border-top: 2px solid #535353;
-    border-bottom: 2px solid #535353;
+    border-top: 2px solid #0c4670;
+    border-bottom: 2px solid #0c4670;
 }
 
 table {
-    border-bottom: 2px solid #535353;
+    border-bottom: 2px solid #0c4670;
 }
 
 th, td {
+    color: #003153;
     padding: 0.2rem 15px;
     text-align: left;
 }
