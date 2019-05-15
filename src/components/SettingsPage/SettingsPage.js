@@ -19,6 +19,14 @@ function SettingsPage(props) {
         props.dispatch(action);
     }
 
+    const setIncline = (event) => {
+        const action = {
+            type: 'SET_INCLINE_UNITS',
+            payload: event.target.value
+        };
+        props.dispatch(action);
+    }
+
     return (
         <div>
             <h2>Settings</h2>
@@ -38,7 +46,7 @@ function SettingsPage(props) {
             </div>
             <div>
                 <label htmlFor="incline-units">Incline Units: </label>
-                <select id="incline-units" defaultValue={props.units.incline}>
+                <select id="incline-units" onChange={setIncline} value={props.units.incline}>
                     <option value="percent">Percent</option>
                     <option value="degrees">Degrees</option>
                 </select>

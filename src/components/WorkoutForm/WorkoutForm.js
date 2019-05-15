@@ -52,8 +52,8 @@ function WorkoutForm(props) {
         <div>
             <form onSubmit={handleSubmit}>
                 <input name="distance" onChange={handleChange} type="number" placeholder={ "Distance (" + props.distance + ")" } value={data.distance} />
-                <input name="duration" onChange={handleChange} type="number" placeholder="Time (minutes)" value={data.duration} />
-                <input name="incline" onChange={handleChange} type="number" placeholder="Incline (percent)" value={data.incline} />
+                <input name="duration" onChange={handleChange} type="number" placeholder={ "Time (" + props.duration + ")" } value={data.duration} />
+                <input name="incline" onChange={handleChange} type="number" placeholder={"Incline (" + props.incline + ")" } value={data.incline} />
                 <SubmitButton value="Log Run" />
             </form>
         </div>
@@ -61,7 +61,9 @@ function WorkoutForm(props) {
 }
 
 const mapReduxStoreToProps = (reduxStore) => ({
-    distance: reduxStore.units.distance
+    distance: reduxStore.units.distance,
+    duration: reduxStore.units.duration,
+    incline: reduxStore.units.incline
 });
 
 export default connect(mapReduxStoreToProps)(WorkoutForm);

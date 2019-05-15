@@ -39,7 +39,7 @@ class Workout {
         if (distanceUnits === 'miles') {
             return this.distanceMiles;
         } else if (distanceUnits === 'kilometers') {
-            return (this.distanceMiles * MILES_TO_KILOMETERS).toFixed(2);
+            return Number((this.distanceMiles * MILES_TO_KILOMETERS).toFixed(2));
         } else {
             return 'ERROR';
         }
@@ -53,17 +53,23 @@ class Workout {
         if (durationUnits === 'minutes') {
             return this.durationMinutes;
         } else if (durationUnits === 'hours') {
-            return (this.durationMinutes * MINUTES_TO_HOURS).toFixed(2);
+            return Number((this.durationMinutes * MINUTES_TO_HOURS).toFixed(2));
         } else {
             return 'ERROR';
         }
     }
 
-    getIncline() {
-        if (this.inclinePercent) {
+    getIncline(units) {
+        if (!this.inclinePercent) {
+            return ''
+        }
+        const inclineUnits = units.incline;
+        if (inclineUnits === 'percent') {
             return this.inclinePercent;
+        } else if (inclineUnits === 'degrees') {
+            return Number(Math.atan(this.inclinePercent).toFixed(2));
         } else {
-            return '';
+            return 'ERROR';
         }
     }
 }
