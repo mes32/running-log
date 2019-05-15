@@ -1,0 +1,19 @@
+input.numeric-input {
+    border: 2px solid #246ca0;
+    background-color: white;
+    color: #003153;
+    padding: 0.2rem 5px;
+    margin-left: 5px;
+    outline: none;
+    font-weight: bold;
+}
+
+input.numeric-input::placeholder {
+    color: #246ca0;
+    font-weight: normal;
+}
+
+input.numeric-input:focus {
+    border: 2px solid #003153;
+    box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.3);
+}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import './WorkoutForm.css';
+import NumericInput from '../NumericInput/NumericInput';
 import SubmitButton from '../SubmitButton/SubmitButton';
 
 const DEFAULT_DATA = {
@@ -51,9 +52,9 @@ function WorkoutForm(props) {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input name="distance" onChange={handleChange} type="number" placeholder={ "Distance (" + props.distance + ")" } value={data.distance} />
-                <input name="duration" onChange={handleChange} type="number" placeholder={ "Time (" + props.duration + ")" } value={data.duration} />
-                <input name="incline" onChange={handleChange} type="number" placeholder={"Incline (" + props.incline + ")" } value={data.incline} />
+                <NumericInput name="distance" onChange={handleChange} placeholder={"Distance (" + props.distance + ")"} value={data.distance} />
+                <NumericInput name="duration" onChange={handleChange} placeholder={"Time (" + props.duration + ")"} value={data.duration} />
+                <NumericInput name="incline" onChange={handleChange} placeholder={"Incline (" + props.incline + ")"} value={data.incline} />
                 <SubmitButton value="Log Run" />
             </form>
         </div>
