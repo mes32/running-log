@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import DropdownMenu from '../DropdownMenu/DropdownMenu';
+
 function SettingsPage(props) {
 
     const setDistance = (event) => {
@@ -31,25 +33,31 @@ function SettingsPage(props) {
         <div>
             <h2>Settings</h2>
             <div>
-                <label htmlFor="distance-units">Distance Units: </label>
-                <select id="distance-units" onChange={setDistance} value={props.units.distance}>
-                    <option value="miles">Miles</option>
-                    <option value="kilometers">Kilometers</option>
-                </select>
+                <DropdownMenu
+                    id="distance-units"
+                    label="Distance Units:"
+                    onChange={setDistance}
+                    optionList={['miles', 'kilometers']}
+                    value={props.units.distance}
+                />
             </div>
             <div>
-                <label htmlFor="duration-units">Duration Units: </label>
-                <select id="duration-units" onChange={setDuration} value={props.units.duration}>
-                    <option value="minutes">Minutes</option>
-                    <option value="hours">Hours</option>
-                </select>
+                <DropdownMenu
+                    id="duration-units"
+                    label="Duration Units:"
+                    onChange={setDuration}
+                    optionList={['minutes', 'hours']}
+                    value={props.units.duration}
+                />
             </div>
             <div>
-                <label htmlFor="incline-units">Incline Units: </label>
-                <select id="incline-units" onChange={setIncline} value={props.units.incline}>
-                    <option value="percent">Percent</option>
-                    <option value="degrees">Degrees</option>
-                </select>
+                <DropdownMenu
+                    id="incline-units"
+                    label="Incline Units:"
+                    onChange={setIncline}
+                    optionList={['percent', 'degrees']}
+                    value={props.units.incline}
+                />
             </div>
         </div>
     );
